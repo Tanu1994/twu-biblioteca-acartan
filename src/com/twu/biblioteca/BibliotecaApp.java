@@ -14,7 +14,13 @@ public class BibliotecaApp {
                 new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 2016, false),
                 new Book("The Great Gatsby", "F Scott Fitzgerald", 2007, false),
                 new Book("Vanity Fair", "William Thackery", 2011, false),
-                new Book("The Hobbit", "JRR Tolkien", 2015, false),
+                new Book("The Hobbit", "JRR Tolkien", 2015, false)
+        };
+        Movie[] movies = {
+                new Movie("The Godfather", "Francis Ford Coppola", 1972, 4.70, false),
+                new Movie("Pulp Fiction", "Quentin Tarantino", 1994, 3.80, false),
+                new Movie("Star Wars", "George Lucas", 1977, 4.20, false),
+                new Movie("The Matrix", "The Wachowskis", 1999, 4.40, false)
         };
         Scanner in = new Scanner(System.in);
 
@@ -30,11 +36,14 @@ public class BibliotecaApp {
             System.out.println("1. See a list of books");
             System.out.println("2. Checkout a book");
             System.out.println("3. Return a book");
-            System.out.println("4. Quit");
+            System.out.println("4. See a list of movies");
+            System.out.println("5. Checkout a movie");
+            System.out.println("6. Return a movie");
+            System.out.println("7. Quit");
             selection = in.nextInt();
 
-            menu.doAction(selection, books);
+            menu.doAction(selection, books, movies);
         }
-        while (selection != 4);
+        while (selection != 7);
     }
 }

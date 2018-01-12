@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class MovieTest {
 
-    Movie movie = new Movie("The Godfather", "Francis Ford Coppola", 1972, 4.70, false);
+    private Movie movie = new Movie("The Godfather", "Francis Ford Coppola", 1972, 4.70, false);
 
     @Test
     public void testGetSetName(){

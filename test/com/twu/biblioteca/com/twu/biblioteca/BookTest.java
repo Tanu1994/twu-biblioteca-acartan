@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class BookTest {
 
-    Book book = new Book("Harry Potter", "J K Rowling", 2002, false);
+    private Book book = new Book("Harry Potter", "J K Rowling", 2002, false);
 
     @Test
     public void testGetSetName(){
