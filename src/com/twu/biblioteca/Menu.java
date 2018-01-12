@@ -19,9 +19,10 @@ public class Menu {
             }
             case 2: {
                 checkoutBook(books);
+                break;
             }
             case 3: {
-                returnBook();
+                returnBook(books);
                 break;
             }
             case 4: break;
@@ -42,7 +43,10 @@ public class Menu {
 
         boolean checkBookExists = false;
         for (int i = 0; i < books.length; i++){
-            if (books[i].getName().equals(bookName)) checkBookExists = true;
+            if (books[i].getName().equals(bookName)) {
+                books[i].setBooked(true);
+                checkBookExists = true;
+            }
         }
 
         if (checkBookExists){
@@ -53,15 +57,36 @@ public class Menu {
         }
     }
 
-    private void returnBook() {
+    private void returnBook(Book[] books) {
+        Scanner in = new Scanner(System.in);
+        String bookName;
+        System.out.println("Please type the name of book you want to return:");
+        bookName = in.nextLine();
 
+        boolean checkBookExists = false;
+        for (int i = 0; i < books.length; i++){
+            if (books[i].getName().equals(bookName)) {
+                books[i].setBooked(false);
+                checkBookExists = true;
+            }
+        }
+
+        if (checkBookExists){
+            System.out.println("Thank you for returning the book.");
+        }
+        else{
+            System.out.println("That is not a valid book to return.");
+        }
     }
 
     private void printListOfBooks(Book[] books) {
         System.out.println("List of available books:");
         System.out.println();
         for (int i = 0; i < books.length; i++){
-            System.out.println(books[i].getName() + " " + books[i].getAuthor() + " " + books[i].getYear());
+            if (!books[i].getBooked()) {
+                System.out.println("'" + books[i].getName() + "'" + ", by " + books[i].getAuthor() + " ("
+                        + books[i].getYear() + ")");
+            }
         }
     }
 }
