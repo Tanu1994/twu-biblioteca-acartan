@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class Menu {
 
     private Book[] books;
@@ -16,6 +18,9 @@ public class Menu {
                 break;
             }
             case 2: {
+                checkoutBook(books);
+            }
+            case 3: {
                 returnBook();
                 break;
             }
@@ -26,6 +31,25 @@ public class Menu {
                 System.out.println("Sorry, this is not a valid option. Please select another option.");
                 break;
             }
+        }
+    }
+
+    private void checkoutBook(Book[] books) {
+        Scanner in = new Scanner(System.in);
+        String bookName;
+        System.out.println("Please type the name of book you want to checkout:");
+        bookName = in.nextLine();
+
+        boolean checkBookExists = false;
+        for (int i = 0; i < books.length; i++){
+            if (books[i].getName().equals(bookName)) checkBookExists = true;
+        }
+
+        if (checkBookExists){
+            System.out.println("Thank you! Enjoy the book");
+        }
+        else{
+            System.out.println("That book is not available.");
         }
     }
 
