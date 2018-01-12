@@ -24,7 +24,7 @@ public class BibliotecaApp {
         System.out.println("Please select one of the following options.");
         System.out.println();
 
-        int selection = 0;
+        int selection;
 
         do{
             System.out.println("1. See a list of books");

@@ -6,9 +6,8 @@ public class Book {
     private String author;
     private int year;
     private boolean booked;
-    private Book[] books;
 
-    public Book(String name, String author, int year, boolean booked){
+    Book(String name, String author, int year, boolean booked){
         this.name = name;
         this.author = author;
         this.year = year;

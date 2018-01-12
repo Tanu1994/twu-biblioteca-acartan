@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private Book[] books;
-
     public String WelcomeMessage() {
         return "Welcome to Biblioteca! Our library is available.";
     }
@@ -42,9 +40,9 @@ public class Menu {
         bookName = in.nextLine();
 
         boolean checkBookExists = false;
-        for (int i = 0; i < books.length; i++){
-            if (books[i].getName().equals(bookName)) {
-                books[i].setBooked(true);
+        for (Book book : books) {
+            if (book.getName().equals(bookName)) {
+                book.setBooked(true);
                 checkBookExists = true;
             }
         }
@@ -64,9 +62,9 @@ public class Menu {
         bookName = in.nextLine();
 
         boolean checkBookExists = false;
-        for (int i = 0; i < books.length; i++){
-            if (books[i].getName().equals(bookName)) {
-                books[i].setBooked(false);
+        for (Book book : books) {
+            if (book.getName().equals(bookName)) {
+                book.setBooked(false);
                 checkBookExists = true;
             }
         }
@@ -82,10 +80,10 @@ public class Menu {
     private void printListOfBooks(Book[] books) {
         System.out.println("List of available books:");
         System.out.println();
-        for (int i = 0; i < books.length; i++){
-            if (!books[i].getBooked()) {
-                System.out.println("'" + books[i].getName() + "'" + ", by " + books[i].getAuthor() + " ("
-                        + books[i].getYear() + ")");
+        for (Book book : books) {
+            if (!book.getBooked()) {
+                System.out.println("'" + book.getName() + "'" + ", by " + book.getAuthor() + " ("
+                        + book.getYear() + ")");
             }
         }
     }
