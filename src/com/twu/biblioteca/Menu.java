@@ -8,7 +8,7 @@ public class Menu {
         return "Welcome to Biblioteca! Our library is available.";
     }
 
-    public void doAction(int selection, Book[] books, Movie[] movies) {
+    public void doAction(int selection, Book[] books, Movie[] movies, User user) {
         switch (selection){
             case 1: {
                 printListOfBooks(books);
@@ -36,7 +36,11 @@ public class Menu {
                 returnMovie(movies);
                 break;
             }
-            case 7: break;
+            case 7: {
+                showUserInfo(user);
+                break;
+            }
+            case 8: break;
             default:
             {
                 System.out.println();
@@ -44,6 +48,12 @@ public class Menu {
                 break;
             }
         }
+    }
+
+    private void showUserInfo(User user) {
+        System.out.println("Name: " + user.getName());
+        System.out.println("Email address: " + user.getEmail());
+        System.out.println("Phone number: " + user.getPhone());
     }
 
     private void printListOfMovies(Movie[] movies) {

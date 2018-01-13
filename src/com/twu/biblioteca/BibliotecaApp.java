@@ -22,6 +22,8 @@ public class BibliotecaApp {
                 new Movie("Star Wars", "George Lucas", 1977, 4.20, false),
                 new Movie("The Matrix", "The Wachowskis", 1999, 4.40, false)
         };
+
+        User user = new User("000-0000","password","John Smith","john@smith.com","07778");
         Scanner in = new Scanner(System.in);
 
 
@@ -39,11 +41,12 @@ public class BibliotecaApp {
             System.out.println("4. See a list of movies");
             System.out.println("5. Checkout a movie");
             System.out.println("6. Return a movie");
-            System.out.println("7. Quit");
+            System.out.println("7. User Info");
+            System.out.println("8. Quit");
             selection = in.nextInt();
 
-            menu.doAction(selection, books, movies);
+            menu.doAction(selection, books, movies, user);
         }
-        while (selection != 7);
+        while (selection != 8);
     }
 }
