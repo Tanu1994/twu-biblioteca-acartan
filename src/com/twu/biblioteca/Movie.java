@@ -1,26 +1,13 @@
 package com.twu.biblioteca;
 
-public class Movie {
-    private String name;
+public class Movie extends LibraryItem {
     private String director;
-    private int year;
     private double rating;
-    private boolean booked;
 
     Movie(String name, String director, int year, double rating, boolean booked){
-        this.name = name;
+        super(name, year, booked);
         this.director = director;
-        this.year = year;
         this.rating = rating;
-        this.booked = booked;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
     }
 
     public String getDirector() {
@@ -31,14 +18,6 @@ public class Movie {
         this.director = director;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public double getRating() {
         return rating;
     }
@@ -47,11 +26,4 @@ public class Movie {
         this.rating = rating;
     }
 
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
 }

@@ -21,11 +21,11 @@ public class Menu {
                 break;
             }
             case "2": {
-                checkoutBook(books);
+                checkoutItem(books);
                 break;
             }
             case "3": {
-                returnBook(books);
+                returnItem(books);
                 break;
             }
             case "4": {
@@ -33,11 +33,11 @@ public class Menu {
                 break;
             }
             case "5": {
-                checkoutMovie(movies);
+                checkoutItem(movies);
                 break;
             }
             case "6": {
-                returnMovie(movies);
+                returnItem(movies);
                 break;
             }
             case "7": {
@@ -97,83 +97,43 @@ public class Menu {
         }
     }
 
-    private void checkoutBook(Book[] books) {
-        System.out.println("Please type the name of book you want to checkout:");
-        String bookName = readUserInput();
+    private void checkoutItem(LibraryItem[] items) {
+        System.out.println("Please type the name of the item you want to checkout:");
+        String itemName = readUserInput();
 
-        boolean checkBookExists = false;
-        for (Book book : books) {
-            if (book.getName().equals(bookName)) {
-                book.setBooked(true);
-                checkBookExists = true;
+        boolean checkItemExists = false;
+        for (LibraryItem item : items) {
+            if (item.getName().equals(itemName)) {
+                item.setBooked(true);
+                checkItemExists = true;
             }
         }
 
-        if (checkBookExists){
-            System.out.println("Thank you! Enjoy the book");
+        if (checkItemExists){
+            System.out.println("Thank you! Enjoy");
         }
         else{
-            System.out.println("That book is not available.");
+            System.out.println("That item is not available.");
         }
     }
 
-    private void returnBook(Book[] books) {
-        System.out.println("Please type the name of book you want to return:");
-        String bookName = readUserInput();
+    private void returnItem(LibraryItem[] items) {
+        System.out.println("Please type the name of item you want to return:");
+        String itemName = readUserInput();
 
-        boolean checkBookExists = false;
-        for (Book book : books) {
-            if (book.getName().equals(bookName)) {
-                book.setBooked(false);
-                checkBookExists = true;
+        boolean checkItemExists = false;
+        for (LibraryItem item : items) {
+            if (item.getName().equals(itemName)) {
+                item.setBooked(false);
+                checkItemExists = true;
             }
         }
 
-        if (checkBookExists){
-            System.out.println("Thank you for returning the book.");
+        if (checkItemExists){
+            System.out.println("Thank you for returning the item.");
         }
         else{
-            System.out.println("That is not a valid book to return.");
-        }
-    }
-
-    private void checkoutMovie(Movie[] movies) {
-        System.out.println("Please type the name of movie you want to checkout:");
-        String movieName = readUserInput();
-
-        boolean checkMovieExists = false;
-        for (Movie movie : movies) {
-            if (movie.getName().equals(movieName)) {
-                movie.setBooked(true);
-                checkMovieExists = true;
-            }
-        }
-
-        if (checkMovieExists){
-            System.out.println("Thank you! Enjoy the movie");
-        }
-        else{
-            System.out.println("That movie is not available.");
-        }
-    }
-
-    private void returnMovie(Movie[] movies) {
-        System.out.println("Please type the name of movie you want to return:");
-        String movieName = readUserInput();
-
-        boolean checkMovieExists = false;
-        for (Movie movie : movies) {
-            if (movie.getName().equals(movieName)) {
-                movie.setBooked(false);
-                checkMovieExists = true;
-            }
-        }
-
-        if (checkMovieExists){
-            System.out.println("Thank you for returning the movie.");
-        }
-        else{
-            System.out.println("That is not a valid movie to return.");
+            System.out.println("That is not a valid item to return.");
         }
     }
 
@@ -185,7 +145,7 @@ public class Menu {
     private void printListOfBooks(Book[] books) {
         System.out.println("List of available books:\n");
         for (Book book : books) {
-            if (!book.getBooked()) {
+            if (!book.isBooked()) {
                 System.out.println("'" + book.getName() + "'" + ", by " + book.getAuthor() + " ("
                         + book.getYear() + ")");
             }

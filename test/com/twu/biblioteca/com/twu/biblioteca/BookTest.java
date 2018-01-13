@@ -31,9 +31,9 @@ public class BookTest {
 
     @Test
     public void testGetSetBooked(){
-        assertEquals("Test if initial status of booking is set through constructor", false, book.getBooked());
+        assertEquals("Test if initial status of booking is set through constructor", false, book.isBooked());
         book.setBooked(true);
-        assertEquals("Test if status of booking has changed", true, book.getBooked());
+        assertEquals("Test if status of booking has changed", true, book.isBooked());
     }
 
 }
