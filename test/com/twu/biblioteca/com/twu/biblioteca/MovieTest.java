@@ -43,4 +43,8 @@ public class MovieTest {
         assertEquals("Test if booking status has changed", true, movie.isBooked());
     }
 
+    @Test
+    public void testToString() {
+       assertEquals("'The Godfather', by Francis Ford Coppola (1972) - Rating: 4.70", movie.toString());
+    }
 }

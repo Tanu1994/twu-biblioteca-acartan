@@ -36,4 +36,8 @@ public class BookTest {
         assertEquals("Test if status of booking has changed", true, book.isBooked());
     }
 
+    @Test
+    public void testToString() {
+        assertEquals("'Harry Potter', by J K Rowling (2002)", book.toString());
+    }
 }

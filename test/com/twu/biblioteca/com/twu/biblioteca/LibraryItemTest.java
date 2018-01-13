@@ -50,4 +50,9 @@ public class LibraryItemTest {
         item.setBooked(true);
         assertEquals(true, item.isBooked());
     }
+
+    @Test
+    public void testToString() {
+        assertEquals("'Item' (2000)", item.toString());
+    }
 }

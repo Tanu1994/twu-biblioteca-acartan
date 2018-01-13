@@ -17,7 +17,7 @@ public class Menu {
         }
         else switch (selection){
             case "1": {
-                printListOfBooks(books);
+                printListOfItems(books);
                 break;
             }
             case "2": {
@@ -29,7 +29,7 @@ public class Menu {
                 break;
             }
             case "4": {
-                printListOfMovies(movies);
+                printListOfItems(movies);
                 break;
             }
             case "5": {
@@ -87,12 +87,11 @@ public class Menu {
         System.out.println("Phone number: " + loggedInUser.getPhone());
     }
 
-    private void printListOfMovies(Movie[] movies) {
-        System.out.println("List of available movies:\n");
-        for (Movie movie : movies) {
-            if (!movie.isBooked()) {
-                System.out.println("'" + movie.getName() + "'" + ", by " + movie.getDirector() + " ("
-                        + movie.getYear() + ")" + " - Rating: " + movie.getRating());
+    private void printListOfItems(LibraryItem[] items) {
+        System.out.println("List of available items:\n");
+        for (LibraryItem item : items) {
+            if (!item.isBooked()) {
+                System.out.println(item.toString());
             }
         }
     }
@@ -140,15 +139,5 @@ public class Menu {
     private String readUserInput() {
         Scanner in = new Scanner(System.in);
         return in.nextLine();
-    }
-
-    private void printListOfBooks(Book[] books) {
-        System.out.println("List of available books:\n");
-        for (Book book : books) {
-            if (!book.isBooked()) {
-                System.out.println("'" + book.getName() + "'" + ", by " + book.getAuthor() + " ("
-                        + book.getYear() + ")");
-            }
-        }
     }
 }

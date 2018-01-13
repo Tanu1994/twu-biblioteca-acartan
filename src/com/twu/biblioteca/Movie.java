@@ -26,4 +26,8 @@ public class Movie extends LibraryItem {
         this.rating = rating;
     }
 
+    @Override
+    public String toString() {
+        return String.format("'%s', by %s (%d) - Rating: %.2f", this.getName(), this.getDirector(), this.getYear(), this.getRating());
+    }
 }

@@ -35,4 +35,9 @@ public class LibraryItem {
     public void setBooked(boolean booked) {
         this.booked = booked;
     }
+
+    @Override
+    public String toString() {
+        return String.format("'%s' (%d)", this.name, this.year);
+    }
 }
