@@ -15,7 +15,6 @@ public class Menu {
         switch (selection){
             case "1": {
                 printListOfBooks(books);
-                System.out.println();
                 break;
             }
             case "2": {
@@ -28,7 +27,6 @@ public class Menu {
             }
             case "4": {
                 printListOfMovies(movies);
-                System.out.println();
                 break;
             }
             case "5": {
@@ -51,21 +49,21 @@ public class Menu {
             case "8": break;
             default:
             {
-                System.out.println();
-                System.out.println("Sorry, this is not a valid option. Please select another option.");
+                System.out.println("\nSorry, this is not a valid option. Please select another option.");
                 break;
             }
+
         }
+        System.out.println();
     }
 
     private void doLogin(User[] users) {
 
-        Scanner in = new Scanner(System.in);
         System.out.println("You have to login.");
         System.out.println("Username:");
-        String username = in.nextLine();
+        String username = readUserInput();
         System.out.println("Password:");
-        String password = in.nextLine();
+        String password = readUserInput();
 
         for (User user:users) {
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())){
@@ -87,8 +85,7 @@ public class Menu {
     }
 
     private void printListOfMovies(Movie[] movies) {
-        System.out.println("List of available movies:");
-        System.out.println();
+        System.out.println("List of available movies:\n");
         for (Movie movie : movies) {
             if (!movie.isBooked()) {
                 System.out.println("'" + movie.getName() + "'" + ", by " + movie.getDirector() + " ("
@@ -98,10 +95,8 @@ public class Menu {
     }
 
     private void checkoutBook(Book[] books) {
-        Scanner in = new Scanner(System.in);
-        String bookName;
         System.out.println("Please type the name of book you want to checkout:");
-        bookName = in.nextLine();
+        String bookName = readUserInput();
 
         boolean checkBookExists = false;
         for (Book book : books) {
@@ -120,10 +115,8 @@ public class Menu {
     }
 
     private void returnBook(Book[] books) {
-        Scanner in = new Scanner(System.in);
-        String bookName;
         System.out.println("Please type the name of book you want to return:");
-        bookName = in.nextLine();
+        String bookName = readUserInput();
 
         boolean checkBookExists = false;
         for (Book book : books) {
@@ -142,10 +135,8 @@ public class Menu {
     }
 
     private void checkoutMovie(Movie[] movies) {
-        Scanner in = new Scanner(System.in);
-        String movieName;
         System.out.println("Please type the name of movie you want to checkout:");
-        movieName = in.nextLine();
+        String movieName = readUserInput();
 
         boolean checkMovieExists = false;
         for (Movie movie : movies) {
@@ -164,10 +155,8 @@ public class Menu {
     }
 
     private void returnMovie(Movie[] movies) {
-        Scanner in = new Scanner(System.in);
-        String movieName;
         System.out.println("Please type the name of movie you want to return:");
-        movieName = in.nextLine();
+        String movieName = readUserInput();
 
         boolean checkMovieExists = false;
         for (Movie movie : movies) {
@@ -185,9 +174,13 @@ public class Menu {
         }
     }
 
+    private String readUserInput() {
+        Scanner in = new Scanner(System.in);
+        return in.nextLine();
+    }
+
     private void printListOfBooks(Book[] books) {
-        System.out.println("List of available books:");
-        System.out.println();
+        System.out.println("List of available books:\n");
         for (Book book : books) {
             if (!book.getBooked()) {
                 System.out.println("'" + book.getName() + "'" + ", by " + book.getAuthor() + " ("
