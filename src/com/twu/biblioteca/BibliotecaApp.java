@@ -23,7 +23,10 @@ public class BibliotecaApp {
                 new Movie("The Matrix", "The Wachowskis", 1999, 4.40, false)
         };
 
-        User user = new User("000-0000","password","John Smith","john@smith.com","07778");
+        User[] users = {
+                new User("000-0000","password","John Smith","john@smith.com","07778"),
+                new User("111-1111","other","Ana Smith","ana@smith.com","078324")
+        };
         Scanner in = new Scanner(System.in);
 
 
@@ -32,7 +35,7 @@ public class BibliotecaApp {
         System.out.println("Please select one of the following options.");
         System.out.println();
 
-        int selection;
+        String selection;
 
         do{
             System.out.println("1. See a list of books");
@@ -43,10 +46,10 @@ public class BibliotecaApp {
             System.out.println("6. Return a movie");
             System.out.println("7. User Info");
             System.out.println("8. Quit");
-            selection = in.nextInt();
+            selection = in.nextLine();
 
-            menu.doAction(selection, books, movies, user);
+            menu.doAction(selection, books, movies, users);
         }
-        while (selection != 8);
+        while (!selection.equals("8"));
     }
 }

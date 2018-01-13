@@ -4,43 +4,51 @@ import java.util.Scanner;
 
 public class Menu {
 
+    private User loggedInUser;
+    private boolean loggedIn = false;
+
     public String WelcomeMessage() {
         return "Welcome to Biblioteca! Our library is available.";
     }
 
-    public void doAction(int selection, Book[] books, Movie[] movies, User user) {
+    public void doAction(String selection, Book[] books, Movie[] movies, User[] users) {
         switch (selection){
-            case 1: {
+            case "1": {
                 printListOfBooks(books);
                 System.out.println();
                 break;
             }
-            case 2: {
+            case "2": {
                 checkoutBook(books);
                 break;
             }
-            case 3: {
+            case "3": {
                 returnBook(books);
                 break;
             }
-            case 4: {
+            case "4": {
                 printListOfMovies(movies);
                 System.out.println();
                 break;
             }
-            case 5: {
+            case "5": {
                 checkoutMovie(movies);
                 break;
             }
-            case 6: {
+            case "6": {
                 returnMovie(movies);
                 break;
             }
-            case 7: {
-                showUserInfo(user);
+            case "7": {
+                if(loggedIn){
+                    showUserInfo();
+                }
+                else {
+                    doLogin(users);
+                }
                 break;
             }
-            case 8: break;
+            case "8": break;
             default:
             {
                 System.out.println();
@@ -50,10 +58,32 @@ public class Menu {
         }
     }
 
-    private void showUserInfo(User user) {
-        System.out.println("Name: " + user.getName());
-        System.out.println("Email address: " + user.getEmail());
-        System.out.println("Phone number: " + user.getPhone());
+    private void doLogin(User[] users) {
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("You have to login.");
+        System.out.println("Username:");
+        String username = in.nextLine();
+        System.out.println("Password:");
+        String password = in.nextLine();
+
+        for (User user:users) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())){
+                this.loggedInUser = user;
+                this.loggedIn = true;
+                System.out.println("You're logged in.");
+            }
+        }
+
+        if (!loggedIn) {
+            System.out.println("Sorry, username or password are not valid.");
+        }
+    }
+
+    private void showUserInfo() {
+        System.out.println("Name: " + loggedInUser.getName());
+        System.out.println("Email address: " + loggedInUser.getEmail());
+        System.out.println("Phone number: " + loggedInUser.getPhone());
     }
 
     private void printListOfMovies(Movie[] movies) {
