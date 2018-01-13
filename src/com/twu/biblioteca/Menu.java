@@ -12,7 +12,10 @@ public class Menu {
     }
 
     public void doAction(String selection, Book[] books, Movie[] movies, User[] users) {
-        switch (selection){
+        if (selection.matches("[23567]") && (!loggedIn)) {
+            doLogin(users);
+        }
+        else switch (selection){
             case "1": {
                 printListOfBooks(books);
                 break;
